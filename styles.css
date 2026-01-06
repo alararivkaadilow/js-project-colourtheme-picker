@@ -1,37 +1,56 @@
+body {
+
+    color: rgb(60, 0, 179);
+}
+
 h1 {
+
     text-align: center;
-    padding: 40px;
-    color: lightblue;
+    padding: 5px;
+    color: rgb(75, 135, 156);
     text-transform: uppercase;
 
 }
 
+h2 {
+    display: block;
+    font-size: 10pt;
+    font-weight: 700;
+    margin-top: 10px;
+}
+
+p {
+    display: block;
+    font-size: 10pt;
+    font-weight: 700;
+    margin-top: 10px;
+}
+
 input {
 
-
-    margin: 20px;
-    padding: 0px;
-    border: solid 1px lightblue;
+    margin: 0px 7px 0px 7px;
+    display: inline-block;
+    border: solid 1px rgb(75, 135, 156);
     border-radius: 100%;
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
     align-self: center;
 }
 
 select {
 
-
     padding: 5px;
     margin: 0 auto;
-    display: block;
-    width: 100px;
+    margin: 0px 7px 0px 7px;
+    display: inline-block;
+    width: 200px;
     height: 30px;
-
+    display: inline;
 }
 
 hr {
 
-    margin: 10px;
+    margin: 5px;
 }
 
 #colour1,
@@ -39,32 +58,70 @@ hr {
 #colour3,
 #colour4,
 #colour5 {
+
     margin: 20px 5px 20px 5px;
 
     display: inline-block;
-    width: 70px;
-    height: 120px;
+    width: 50px;
+    height: 50px;
     background-color: beige;
-    border: solid 1px slategray;
-    border-radius: 10px;
+    border: solid 1px rgb(75, 135, 156);
+    border-radius: 50px;
 }
 
-button {
-    display: block;
+#startbutton {
+
+    margin: 0px 7px 0px 7px;
+    display: inline;
     text-align: center;
     margin: 0 auto;
     margin-top: 20px;
     align-self: center;
+    width: 100px;
+    border-radius: 5px;
+    height: 40px;
+    background-color: none;
+    border: 1px solid rgb(75, 135, 156);
+    padding: 0px 0px 0px 0px;
+    font-size: 8pt;
+    font-weight: 700;
 }
+
+
+#copykleuren {
+
+    width: 50px;
+    height: 30px;
+    background-color: none;
+    border: 1px solid rgb(75, 135, 156);
+    border-radius: 2px;
+    font-size: 6pt;
+    color: black;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+#copykleuren:hover {
+    border: 2px solid bisque;
+}
+
+#startbutton:hover {
+    border: 2px solid rgb(255, 238, 0);
+}
+
+
 
 #mainspace {
 
     border-radius: 20px;
-    border: solid 1px lightblue;
+    border: solid 1px rgb(75, 135, 156);
     text-align: center;
     justify-self: center;
+
     margin: 0 auto;
-    background-color: bisque;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    background-color: rgb(240, 246, 246);
     height: auto;
-    width: 500px;
+    width: 400px;
 }
