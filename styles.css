@@ -1,0 +1,70 @@
+h1 {
+    text-align: center;
+    padding: 40px;
+    color: lightblue;
+    text-transform: uppercase;
+
+}
+
+input {
+
+
+    margin: 20px;
+    padding: 0px;
+    border: solid 1px lightblue;
+    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+    align-self: center;
+}
+
+select {
+
+
+    padding: 5px;
+    margin: 0 auto;
+    display: block;
+    width: 100px;
+    height: 30px;
+
+}
+
+hr {
+
+    margin: 10px;
+}
+
+#colour1,
+#colour2,
+#colour3,
+#colour4,
+#colour5 {
+    margin: 20px 5px 20px 5px;
+
+    display: inline-block;
+    width: 70px;
+    height: 120px;
+    background-color: beige;
+    border: solid 1px slategray;
+    border-radius: 10px;
+}
+
+button {
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 20px;
+    align-self: center;
+}
+
+#mainspace {
+
+    border-radius: 20px;
+    border: solid 1px lightblue;
+    text-align: center;
+    justify-self: center;
+    margin: 0 auto;
+    background-color: bisque;
+    height: auto;
+    width: 500px;
+}
