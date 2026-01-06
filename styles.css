@@ -1,22 +1,25 @@
 body {
-
     color: rgb(60, 0, 179);
 }
 
-h1 {
+p {
+    background-color: snow;
+    padding: 20px;
+    margin: 10px 0 10px 0px;
+}
 
+h1 {
     text-align: center;
     padding: 5px;
     color: rgb(75, 135, 156);
     text-transform: uppercase;
-
 }
 
 h2 {
     display: block;
     font-size: 10pt;
     font-weight: 700;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 p {
@@ -28,7 +31,7 @@ p {
 
 input {
 
-    margin: 0px 7px 0px 7px;
+    margin: 0px 12px 0px 12px;
     display: inline-block;
     border: solid 1px rgb(75, 135, 156);
     border-radius: 100%;
@@ -43,14 +46,13 @@ select {
     margin: 0 auto;
     margin: 0px 7px 0px 7px;
     display: inline-block;
-    width: 200px;
+    width: 150px;
     height: 30px;
     display: inline;
 }
 
 hr {
-
-    margin: 5px;
+    margin-bottom: 10px;
 }
 
 #colour1,
@@ -59,11 +61,10 @@ hr {
 #colour4,
 #colour5 {
 
-    margin: 20px 5px 20px 5px;
-
+    margin: 20px 5px 0px 5px;
     display: inline-block;
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
     background-color: beige;
     border: solid 1px rgb(75, 135, 156);
     border-radius: 50px;
@@ -88,7 +89,11 @@ hr {
 }
 
 
-#copykleuren {
+#copykleuren,
+#slaitemsop,
+#btnhaaldataop,
+#btnreset,
+#slaitemsop2 {
 
     width: 50px;
     height: 30px;
@@ -97,8 +102,23 @@ hr {
     border-radius: 2px;
     font-size: 6pt;
     color: black;
+    font-weight: 700;
     text-align: center;
-    margin-bottom: 10px;
+    position: relative;
+    top: 7px;
+
+    margin-top: 5px;
+}
+
+#usernameinput,
+#kleurensetnaam {
+
+
+    width: 250px;
+    height: 30px;
+    border-radius: 3px;
+    border: none;
+
 }
 
 #copykleuren:hover {
@@ -108,8 +128,6 @@ hr {
 #startbutton:hover {
     border: 2px solid rgb(255, 238, 0);
 }
-
-
 
 #mainspace {
 
@@ -122,6 +140,7 @@ hr {
     margin-top: 50px;
     margin-bottom: 50px;
     background-color: rgb(240, 246, 246);
+    padding-bottom: 20px;
     height: auto;
     width: 400px;
 }
