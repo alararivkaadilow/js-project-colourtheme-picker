@@ -1,6 +1,43 @@
 body {
     color: rgb(60, 0, 179);
+    margin: 30px;
+    padding: 0;
 }
+
+#myflexbox {
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 10px;
+
+}
+
+#mainspace,
+#userdata {
+
+    display: inline-block;
+    border-radius: 20px;
+    border: solid 1px brown;
+    text-align: center;
+    font: 8pt;
+    background-color: rgb(240, 246, 246);
+    padding-bottom: 20px;
+    height: auto;
+    width: 300px;
+
+}
+
+#deel1vanusertekst,
+#deel2vanusertekst {
+
+    color: darkslateblue;
+    font-size: 8pt;
+    padding: 5px;
+    margin: 2px;
+}
+
 
 p {
     background-color: snow;
@@ -17,9 +54,22 @@ h1 {
 
 h2 {
     display: block;
-    font-size: 10pt;
+    font-size: 6pt;
     font-weight: 700;
     margin-top: 20px;
+    text-transform: uppercase;
+    text-decoration: underline;
+    text-underline-offset: 5px;
+
+
+}
+
+h3 {
+    display: block;
+    font-size: 6pt;
+    font-weight: 700;
+    margin-top: 20px;
+    text-transform: uppercase;
 }
 
 p {
@@ -44,7 +94,7 @@ select {
 
     padding: 5px;
     margin: 0 auto;
-    margin: 0px 7px 0px 7px;
+    margin: 7px 7px 0px 7px;
     display: inline-block;
     width: 150px;
     height: 30px;
@@ -68,6 +118,20 @@ hr {
     font-size: 7pt;
 }
 
+.hexdisplaywindowsmall {
+
+    margin: 20px 5px 0px 5px;
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: none;
+    border: solid 1px rgb(75, 135, 156);
+    border-radius: 50px;
+    align-content: center;
+    font-size: 7pt;
+}
+
+
 #startbutton {
 
     margin: 0px 7px 0px 7px;
@@ -88,29 +152,38 @@ hr {
 
 
 #copykleuren,
+#copykleuren2,
 #slaitemsop,
 #btnhaaldataop,
 #btnreset,
 #slaitemsop2 {
 
-    width: 50px;
-    height: 30px;
+    display: block;
+
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    margin-bottom: 5px;
+
+    width: 100px;
+    height: 20px;
     background-color: none;
     border: 1px solid rgb(75, 135, 156);
     border-radius: 2px;
-    font-size: 6pt;
+    font-size: 5pt;
     color: black;
     font-weight: 700;
     text-align: center;
     position: relative;
     top: 7px;
 
-    margin-top: 5px;
+    margin-top: 0px
 }
 
 #usernameinput,
 #kleurensetnaam {
-
 
     width: 250px;
     height: 30px;
@@ -125,20 +198,4 @@ hr {
 
 #startbutton:hover {
     border: 2px solid rgb(255, 238, 0);
-}
-
-#mainspace {
-
-    border-radius: 20px;
-    border: solid 1px rgb(75, 135, 156);
-    text-align: center;
-    justify-self: center;
-
-    margin: 0 auto;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    background-color: rgb(240, 246, 246);
-    padding-bottom: 20px;
-    height: auto;
-    width: 400px;
 }

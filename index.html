@@ -12,14 +12,14 @@
 
 <body>
 
-    <main>
+    <main id="myflexbox">
 
 
         <div id="mainspace">
             <h1> SMASH BABY KLEUR 'T </h1>
             <hr>
             <input type="tekst" id="usernameinput" placeholder="Nieuwe gebruiker...? Vul je naam in" />
-            <h2> 1:KIES EEN KLEUR <br> 2:KIES EEN STYLE<br> 3: KUS CRAZY KLEUR!</h2>
+            <h3> 1:KIES EEN KLEUR <br> 2:KIES EEN STYLE<br> 3: KUS CRAZY KLEUR!</h3>
             <input id="colourpicker" type="color" value="#e66465" />
             <label for="colour">
 
@@ -52,28 +52,44 @@
             <br>
 
             <p id="displayhex">
-
             </p>
+            <button id="copykleuren">COPY KLEUR KUS</button>
             <hr>
 
             <input type="tekst" id="kleurensetnaam" placeholder="Geef je smashkleuren een naam">
-            <button id="copykleuren">COPY <BR> KLEUR <br> KUS</button>
-            <button id="slaitemsop">SLA <BR> KLEUREN <br> KLEUR</button>
+
+            <button id="slaitemsop">BEWAAR SCHEMA</button>
 
         </div>
 
-
-        <div id="mainspace">
+        <div id="userdata">
             <h2> Duik in de slapende kleuren in je database</h2>
             <select name="Gebruikers" id="gebruikers">
 
             </select>
 
-            <button id="btnhaaldataop">TOON<BR> MIJN <br> KLEUREN </button>
-            <button id="btnreset">WIS <BR> ALLE <br> DATA <br></button>
-            <button id="slaitemsop2">VOEG <BR> SCHEMA<br> TOE</button>
-            <p id="toongebruikersdata"></p>
+            <button id="btnhaaldataop">TOON MIJN KLEUREN </button>
+            <button id="btnreset">WIS ALLES <br></button>
+            <button id="slaitemsop2">BEWAAR SCHEMA</button>
+
+            <div id="toongebruikersdata">
+
+                <p id="deel1vanusertekst"></p>
+
+                <div class="hexdisplaywindowsmall" id="colour1small"> 1</div>
+                <div class="hexdisplaywindowsmall" id="colour2small">2</div>
+                <div class="hexdisplaywindowsmall" id="colour3small">3</div>
+                <div class="hexdisplaywindowsmall" id="colour4small">4 </div>
+                <div class="hexdisplaywindowsmall" id="colour5small">5 </div>
+                <div class="hexdisplaywindowsmall" id="colour6small">6 </div>
+
+                <p id="deel2vanusertekst"></p>
+
+            </div>
+
         </div>
+
+
 
 
     </main>
