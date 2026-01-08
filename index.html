@@ -19,26 +19,22 @@
             <h1> SMASH BABY KLEUR 'T </h1>
             <hr>
             <input type="tekst" id="usernameinput" placeholder="Nieuwe gebruiker...? Vul je naam in" />
-            <h3> 1:KIES EEN KLEUR <br> 2:KIES EEN STYLE<br> 3: KUS CRAZY KLEUR!</h3>
+            <h2> 1:KIES EEN KLEUR <br> 2:KIES EEN STYLE<br> 3: KUS CRAZY KLEUR!</h2>
             <input id="colourpicker" type="color" value="#e66465" />
             <label for="colour">
-
             </label>
-
 
             <select name="Stylen" id="styles">
                 <option value="monochrome">monochrome</option>
                 <option value="monochrome-dark">monochrome-dark</option>
                 <option value="monochrome-light">monochrome-light</option>
-                <option value="analogic" selected>analogic</option>
+                <option value="analogic">analogic</option>
                 <option value="complement">complement</option>
                 <option value="analogic-complement">analogic-complement</option>
             </select>
 
-
             <button id="startbutton">
-
-                SMASH KLEUR NU!
+                MAAK EEN KLEUREN SCHEMA
             </button>
 
             <br>
@@ -53,37 +49,34 @@
 
             <p id="displayhex">
             </p>
-            <button id="copykleuren">COPY KLEUR KUS</button>
+            <button id="copykleuren">KOPIEER DE KLEUREN</button>
+            <br>
             <hr>
 
             <input type="tekst" id="kleurensetnaam" placeholder="Geef je smashkleuren een naam">
-
-            <button id="slaitemsop">BEWAAR SCHEMA</button>
+            <br>
+            <button id="slaitemsop">BEWAAR JE EERSTE SCHEMA</button>
 
         </div>
 
         <div id="userdata">
-            <h2> Duik in de slapende kleuren in je database</h2>
+            <h3> Duik in de slapende kleuren...
+                <br> van je eigen kleuren database
+            </h3>
             <select name="Gebruikers" id="gebruikers">
 
             </select>
 
             <button id="btnhaaldataop">TOON MIJN KLEUREN </button>
-            <button id="btnreset">WIS ALLES <br></button>
+
             <button id="slaitemsop2">BEWAAR SCHEMA</button>
+            <button id="btnreset">WIS ALLES <br></button>
 
             <div id="toongebruikersdata">
 
                 <p id="deel1vanusertekst"></p>
 
-                <div class="hexdisplaywindowsmall" id="colour1small"> 1</div>
-                <div class="hexdisplaywindowsmall" id="colour2small">2</div>
-                <div class="hexdisplaywindowsmall" id="colour3small">3</div>
-                <div class="hexdisplaywindowsmall" id="colour4small">4 </div>
-                <div class="hexdisplaywindowsmall" id="colour5small">5 </div>
-                <div class="hexdisplaywindowsmall" id="colour6small">6 </div>
-
-                <p id="deel2vanusertekst"></p>
+                <!-- <p id="deel2vanusertekst"></p> -->
 
             </div>
 

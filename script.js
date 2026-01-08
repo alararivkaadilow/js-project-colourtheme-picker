@@ -4,6 +4,12 @@
 const hexcolour = document.getElementById("colourpicker");
 const stylepicker = document.getElementById("styles");
 
+let randomNumForSelectIndex = Math.floor(Math.random() * 6);
+console.log(randomNumForSelectIndex);
+
+stylepicker.selectedIndex = randomNumForSelectIndex;
+stylepicker.dispatchEvent(new Event("change"));
+
 const nameInputEl = document.getElementById("usernameinput")
 const kleurenschemainputnaamEl = document.getElementById("kleurensetnaam")
 
@@ -210,17 +216,16 @@ function slaKleurenOpVoorBestaandeGebruiker() {
     else {
 
         myObject.colourSchemeInHexArray = 0;
-        matchMedia.colourschemeinhexarray
-
-
+        myObject.colourSchemeInHexArray = [];
         for (let i = 0; i < myArrayofDivColourDisplay.length; i++) {
+
             myObject.colourSchemeInHexArray.push(myArrayofDivColourDisplay[i].style.backgroundColor)
         }
 
         myObject.arrayOfAllColourSchemes.push(myObject.colourSchemeInHexArray);
-        MyStorageobject.TijdVanOpslag = Date.now();
+        myObject.TijdVanOpslag = Date.now();
 
-        myObject.arrayofallcolourschemesnames.push(kleurenschemainputnaamEl.value)
+        myObject.arrayOfAllColourSchemesNames.push(kleurenschemainputnaamEl.value)
 
         localStorage.setItem(key, JSON.stringify(myObject));
         haalMijnDataOpEnToonHetaanDeGebruiker();
@@ -248,6 +253,7 @@ function renderGebruikersLijst() {
 
 function haalMijnDataOpEnToonHetaanDeGebruiker() { //! DIT HAALT DE DATA DAT IS OPGESLAGEN IN DE LOCAL STORAGE OP EN TOONT HET AAN DE GEBRUIKER
 
+    displayusertekstdeel1EL.innerHTML = ""
 
     let mykey = dropdownGebruikersEl.value;
     console.log(mykey);
@@ -257,36 +263,44 @@ function haalMijnDataOpEnToonHetaanDeGebruiker() { //! DIT HAALT DE DATA DAT IS 
     let innertextarray = ""
     let innertextarray2 = ""
 
+    let myArrayofHTMLcollections = []
+
+    displayusertekstdeel1EL.innerHTML += `<br> Welkom terug, ${mynewObject.usernamestring}!
+    <br>
+    Je hebt ${mynewObject.arrayOfAllColourSchemesNames.length} in je kleuren wallet: 
+    <br>`
+
     for (let i = 0; i < mynewObject.arrayOfAllColourSchemes.length; i++) {
 
-        for (let innerIndex = 0; innerIndex < arrayofDivColourDisplaySmall.length; innerIndex++) {
+        displayusertekstdeel1EL.innerHTML += `${i + 1} - Jou kleurenschema met de naam ${mynewObject.arrayOfAllColourSchemesNames[i]}: <br>
+    
+                 <div class="hexdisplaywindowsmall${i}" id="colour1small"> 1</div>
+                <div class="hexdisplaywindowsmall${i}" id="colour2small">2</div>
+                <div class="hexdisplaywindowsmall${i}" id="colour3small">3</div>
+                <div class="hexdisplaywindowsmall${i}" id="colour4small">4 </div>
+                <div class="hexdisplaywindowsmall${i}" id="colour5small">5 </div>
+                  <div class="hexdisplaywindowsmall${i}" id="colour6small"> 6 </div>
+                <br>
+                <br>
+                `
+        let htmlcollection = Array.from(document.getElementsByClassName("hexdisplaywindowsmall" + i))
+
+        myArrayofHTMLcollections.push(htmlcollection)
+
+        for (let innerIndex = 0; innerIndex < htmlcollection.length; innerIndex++) {
 
             let counter = innerIndex + 1
-            setTimeout(function () {
+            // setTimeout(function () {
 
-                arrayofDivColourDisplaySmall[innerIndex].style.backgroundColor = mynewObject.arrayOfAllColourSchemes[i][innerIndex]
-
-            }, 700 * counter)
+            myArrayofHTMLcollections[i][innerIndex].style.backgroundColor = mynewObject.arrayOfAllColourSchemes[i][innerIndex]
+            // }, 700 * counter)
 
             console.log(mynewObject.arrayOfAllColourSchemes[i][innerIndex])
         }
 
-        innertextarray += `${i + 1} - Jou kleurenschema met de naam ${mynewObject.arrayOfAllColourSchemesNames[i]}:`
-
-        innertextarray2 = `<br> <br> ${mynewObject.arrayOfAllColourSchemes[i].join("<br>")} \n <br><br>
-          `
+        displayusertekstdeel1EL.innerHTML += ` ${mynewObject.arrayOfAllColourSchemes[i].join("<br>")} \n \n <br><br><hr><br>`
 
     }
-
-    displayusertekstdeel1EL.innerHTML += `<br> Welkom terug, ${mynewObject.usernamestring}!
-    <br>
-    Je hebt ${mynewObject.arrayOfAllColourSchemesNames.length} in je kleuren wallet: <br>
-    <br>
-    ${innertextarray}
-    <br>
-    <br>
-    `
-    displayusertekstdeel2EL.innerHTML += innertextarray2
 
 }
 
