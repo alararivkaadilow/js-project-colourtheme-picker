@@ -55,11 +55,7 @@ hr {
     margin-bottom: 10px;
 }
 
-#colour1,
-#colour2,
-#colour3,
-#colour4,
-#colour5 {
+.hexdisplaywindow {
 
     margin: 20px 5px 0px 5px;
     display: inline-block;
@@ -68,6 +64,8 @@ hr {
     background-color: beige;
     border: solid 1px rgb(75, 135, 156);
     border-radius: 50px;
+    align-content: center;
+    font-size: 7pt;
 }
 
 #startbutton {
