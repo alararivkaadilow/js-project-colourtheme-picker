@@ -1,7 +1,17 @@
 /** My colours: #a0d2eb; (lightblue)   #d0bdf4 >> purlpel  >>>   #e5eaf5 >>> white purple */
 
-/*^ 16 × 1.25=20px 20 × 1.25=25px 25 × 1.25=31.25px 31.25 × 1.25 ≈ 39px 39 × 1.25 ≈ 49px */
+/*^ 16 × 1.25=20px 20 × 1.25=25px 25 × 1.25=31.25px 31.25 × 1.25 ≈ 39px 39 × 1.25 ≈ 49px
 
+ClashGrotesk-Regular
+*/
+
+@font-face {
+    font-family: "ClashGrotesk";
+    src: url("./fonts/ClashGrotesk-Bold.woff2") format("woff2");
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
 
 /* === Load fonts (WOFF2) === */
 @font-face {
@@ -41,7 +51,7 @@
     /* body font */
     --font-body: "Neco", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
     /* display/headings font */
-    --font-display: "Striper", "Neco", system-ui, sans-serif;
+    --font-display: "ClashGrotesk", "Neco", system-ui, sans-serif;
 
     /* Optional: type baseline */
     font-size: 100%;
@@ -105,6 +115,7 @@ body {
     max-height: 250px;
 }
 
+.buttondownclass,
 .buttonupclass {
     background-color: white;
     color: black;
@@ -114,13 +125,15 @@ body {
 
     left: 0;
     right: 0;
-    top: 0;
+    top: 20px;
     bottom: 0;
+    margin: auto;
 
     border: 1px black solid;
-    text-align: center;
 
-    margin: auto;
+    margin-bottom: 5px;
+
+
 }
 
 
@@ -157,12 +170,14 @@ p {
 }
 
 h1 {
-    font-family: "Striper", "Neco", system-ui, sans-serif;
+
+    font-weight: 900;
+    font-family: "ClashGrotesk", "Neco", system-ui, sans-serif;
     text-align: center;
     padding: 0px;
     color: #000000;
     text-transform: uppercase;
-    font-size: 15px;
+    font-size: 20px;
 }
 
 strong {
@@ -188,7 +203,7 @@ h2 {
 
     color: darkslateblue;
 
-    display: block;
+    display: inline-block;
     font-size: 8px;
     font-weight: 700;
     margin-top: 10px;
@@ -198,29 +213,95 @@ h2 {
     line-height: 20px;
 }
 
+
+
 input {
 
     font-family: var(--font-body);
+
 
     margin: 0px 12px 8px 12px;
     display: inline-block;
     border: solid 1px rgb(75, 135, 156);
     border-radius: 100%;
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     align-self: center;
     font-size: 6.4px;
 }
+
+#smallcontainer {
+    position: relative;
+    top: 0;
+    bottom: 0;
+    left: 25px;
+    right: 0;
+    margin: auto;
+}
+
+#colourpicker {
+    position: relative;
+    right: 65px;
+}
+
+
+#styles {
+
+    left: 10px;
+    right: 0;
+    bottom: 0;
+    top: -35px;
+
+    margin: auto;
+
+}
+
+#startbutton {
+
+
+    position: relative;
+
+    right: 20px;
+    font-family: var(--font-body);
+    font-size: 5px;
+    font-weight: 700;
+
+    margin: 0px 7px 0px 7px;
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 10px;
+    align-self: center;
+    width: 50px;
+    height: 50px;
+
+    border-radius: 50%;
+
+    background-color: none;
+    border: 1px solid rgba(75, 134, 156, 0.447);
+    padding: 0px 0px 0px 0px;
+
+
+}
+
 
 select {
 
     font-family: var(--font-body);
 
+    position: relative;
     padding: 5px;
-    margin: 0 auto;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: -10px;
+
+    margin: auto;
+
     margin: 7px 7px 0px 7px;
     display: inline-block;
-    width: 150px;
+    width: 100px;
     height: 20px;
     display: inline;
     border: solid 1px black;
@@ -270,29 +351,7 @@ hr {
 }
 
 
-#startbutton {
 
-    font-family: var(--font-body);
-    font-size: 5px;
-    font-weight: 700;
-
-    margin: 0px 7px 0px 7px;
-    display: block;
-    text-align: center;
-    margin: 0 auto;
-    margin-top: 10px;
-    align-self: center;
-    width: 50px;
-    height: 50px;
-
-    border-radius: 50%;
-
-    background-color: none;
-    border: 1px solid rgba(75, 134, 156, 0.447);
-    padding: 0px 0px 0px 0px;
-
-
-}
 
 
 #copykleuren,
@@ -360,13 +419,15 @@ hr {
     text-decoration: line-through;
 }
 
+
 #usernameinput,
 #kleurensetnaam {
 
+    margin-top: 10px;
     width: 250px;
     height: 20px;
     border-radius: 3px;
-    border: none;
+    border: solid rgba(0, 0, 0, 0.072) 1px;
 
 }
 

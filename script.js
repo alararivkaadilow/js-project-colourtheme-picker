@@ -264,13 +264,15 @@ function haalMijnDataOpEnToonHetaanDeGebruiker() { //! DIT HAALT DE DATA DAT IS 
     let myArrayofHTMLcollections = []
     let myArrayofDivVoorElkeKleur = []
 
+    myArrayofHTMLcollections.length = 0
+    myArrayofDivVoorElkeKleur.length = 0
 
     let mykey = dropdownGebruikersEl.value;
     console.log(mykey);
     let mynewObject = JSON.parse(localStorage.getItem(mykey));
     console.log(mynewObject)
 
-
+    toonGebruikersDataParagraafEL.innerHTML = ""
 
     displayusertekstdeel1EL.innerHTML += `<br> <strong>Welkom terug, ${mynewObject.usernamestring}!
     <br>
@@ -280,7 +282,7 @@ function haalMijnDataOpEnToonHetaanDeGebruiker() { //! DIT HAALT DE DATA DAT IS 
     //* EERST MAKEN WIJ EEN COLLECTIE VAN DIVS VOOR DE KLEUREN 
     for (let i = 0; i < mynewObject.arrayOfAllColourSchemes.length; i++) {
 
-        const divItemEl = document.createElement("div")
+        let divItemEl = document.createElement("div")
         divItemEl.classList.add("divItemEl")
         toonGebruikersDataParagraafEL.appendChild(divItemEl)
 
@@ -288,10 +290,21 @@ function haalMijnDataOpEnToonHetaanDeGebruiker() { //! DIT HAALT DE DATA DAT IS 
         displayUserT.classList.add("deel1vanusertekst")
 
         const BtnUp = document.createElement("button")
+        const BtnDown = document.createElement("button")
+
         BtnUp.classList.add("buttonupclass")
-        BtnUp.textContent = "^"
+        BtnDown.classList.add("buttondownclass")
+
+        BtnUp.innerHTML = `^`
+        BtnDown.innerHTML = `|`
+
         BtnUp.style.display = "block"
+        BtnDown.style.display = "block"
+
+        divItemEl.append(document.createElement("br" + "br"))
         divItemEl.appendChild(BtnUp)
+
+
 
         divItemEl.innerHTML += `${i + 1} ${mynewObject.arrayOfAllColourSchemesNames[i]}: <br>
     
@@ -318,10 +331,17 @@ function haalMijnDataOpEnToonHetaanDeGebruiker() { //! DIT HAALT DE DATA DAT IS 
             // }, 700 * counter)
         }
 
-        divItemEl.innerHTML += ` ${mynewObject.arrayOfAllColourSchemes[i].join("<br>")} \n \n <br><br><hr><br>`
+        divItemEl.innerHTML += ` ${mynewObject.arrayOfAllColourSchemes[i].join("<br>")} \n \n <br><br><hr>`
         let OpgeslagenKleurenDivs = Array.from(document.getElementsByClassName("divItemElement"))
 
+
+        divItemEl.appendChild(BtnDown)
+
+
     }
+
+
+
 
 }
 
