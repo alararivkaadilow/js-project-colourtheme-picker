@@ -1,5 +1,16 @@
 
+// !GLOBALE ARRAYS
+
+const { createElement } = require("react");
+
+
+
+
+
+
 //! INPUT ELEMENTEN
+
+
 
 const hexcolour = document.getElementById("colourpicker");
 const stylepicker = document.getElementById("styles");
@@ -255,31 +266,40 @@ function haalMijnDataOpEnToonHetaanDeGebruiker() { //! DIT HAALT DE DATA DAT IS 
 
     displayusertekstdeel1EL.innerHTML = ""
 
+    let innertextarray = ""
+    let innertextarray2 = ""
+
+    let myArrayofHTMLcollections = []
+    let myArrayofDivVoorElkeKleur = []
+
+
     let mykey = dropdownGebruikersEl.value;
     console.log(mykey);
     let mynewObject = JSON.parse(localStorage.getItem(mykey));
     console.log(mynewObject)
 
-    let innertextarray = ""
-    let innertextarray2 = ""
 
-    let myArrayofHTMLcollections = []
 
-    displayusertekstdeel1EL.innerHTML += `<br> Welkom terug, ${mynewObject.usernamestring}!
+    displayusertekstdeel1EL.innerHTML += `<br> <strong>Welkom terug, ${mynewObject.usernamestring}!
     <br>
-    Je hebt ${mynewObject.arrayOfAllColourSchemesNames.length} in je kleuren wallet: 
-    <br>`
+    Je hebt ${mynewObject.arrayOfAllColourSchemesNames.length} in je kleuren wallet: </strong>
+    <br><br><hr><br>`
 
+    //* EERST MAKEN WIJ EEN COLLECTIE VAN DIVS VOOR DE KLEUREN 
     for (let i = 0; i < mynewObject.arrayOfAllColourSchemes.length; i++) {
 
-        displayusertekstdeel1EL.innerHTML += `${i + 1} - Jou kleurenschema met de naam ${mynewObject.arrayOfAllColourSchemesNames[i]}: <br>
+        const div = createElement("div")
+
+        let itemboxEl = document.getElementById("itembox" + i)
+
+        displayusertekstdeel1EL.innerHTML += `${i + 1} ${mynewObject.arrayOfAllColourSchemesNames[i]}: <br>
     
-                 <div class="hexdisplaywindowsmall${i}" id="colour1small"> 1</div>
-                <div class="hexdisplaywindowsmall${i}" id="colour2small">2</div>
-                <div class="hexdisplaywindowsmall${i}" id="colour3small">3</div>
-                <div class="hexdisplaywindowsmall${i}" id="colour4small">4 </div>
-                <div class="hexdisplaywindowsmall${i}" id="colour5small">5 </div>
-                  <div class="hexdisplaywindowsmall${i}" id="colour6small"> 6 </div>
+                 <div class="hexdisplaywindowsmall${i}" id="colour1small"></div>
+                <div class="hexdisplaywindowsmall${i}" id="colour2small"></div>
+                <div class="hexdisplaywindowsmall${i}" id="colour3small"></div>
+                <div class="hexdisplaywindowsmall${i}" id="colour4small"></div>
+                <div class="hexdisplaywindowsmall${i}" id="colour5small"></div>
+                  <div class="hexdisplaywindowsmall${i}" id="colour6small"></div>
                 <br>
                 <br>
                 `
@@ -287,16 +307,17 @@ function haalMijnDataOpEnToonHetaanDeGebruiker() { //! DIT HAALT DE DATA DAT IS 
 
         myArrayofHTMLcollections.push(htmlcollection)
 
+
+        //* VOOR ELKE DIVJE DIE WE HEBBEN GEMAAKT GAAN WE NU EEN KLEUR GEVEN DIE IN EEN ARRAY ZIT
         for (let innerIndex = 0; innerIndex < htmlcollection.length; innerIndex++) {
 
-            let counter = innerIndex + 1
-            // setTimeout(function () {
-
+            // let counter = innerIndex + 1
+            // // setTimeout(function () {
             myArrayofHTMLcollections[i][innerIndex].style.backgroundColor = mynewObject.arrayOfAllColourSchemes[i][innerIndex]
             // }, 700 * counter)
-
-            console.log(mynewObject.arrayOfAllColourSchemes[i][innerIndex])
         }
+
+
 
         displayusertekstdeel1EL.innerHTML += ` ${mynewObject.arrayOfAllColourSchemes[i].join("<br>")} \n \n <br><br><hr><br>`
 

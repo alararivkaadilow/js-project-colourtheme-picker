@@ -1,7 +1,62 @@
+/** My colours: #a0d2eb; (lightblue)   #d0bdf4 >> purlpel  >>>   #e5eaf5 >>> white purple */
+
+/*^ 16 × 1.25=20px 20 × 1.25=25px 25 × 1.25=31.25px 31.25 × 1.25 ≈ 39px 39 × 1.25 ≈ 49px */
+
+
+/* === Load fonts (WOFF2) === */
+@font-face {
+    font-family: "Neco";
+    src: url("./fonts/Neco-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Neco";
+    src: url("./fonts/Neco-Italic.woff2") format("woff2");
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Neco";
+    src: url("./fonts/Neco-Bold.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Striper";
+    src: url("./fonts/Striper-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* === Use them === */
+:root {
+    /* body font */
+    --font-body: "Neco", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    /* display/headings font */
+    --font-display: "Striper", "Neco", system-ui, sans-serif;
+
+    /* Optional: type baseline */
+    font-size: 100%;
+    /* 1rem = 16px */
+}
+
+
 body {
+
+    font-family: var(--font-body);
+    font-size: 8px;
     color: rgb(60, 0, 179);
     margin: 30px;
     padding: 0;
+    background-color: #eee6ff;
 }
 
 #myflexbox {
@@ -18,24 +73,26 @@ body {
 #userdata {
 
     display: inline-block;
-    border-radius: 20px;
-    border: solid 1px brown;
+    border-radius: 10px;
+    border: solid 1px #a0d2eb;
     text-align: center;
     font: 8pt;
-    background-color: rgb(240, 246, 246);
+    background-color: white;
     padding-bottom: 20px;
-    height: 550px;
+    height: 450px;
     width: 350px;
 
 }
 
-#deel1vanusertekst,
-#deel2vanusertekst {
+#deel1vanusertekst {
 
-    color: darkslateblue;
-    font-size: 8pt;
+    color: black;
+
+    font-weight: 400;
+    font-size: 8px;
+    font-family: var(--font-body);
+
     padding: 5px;
-
     left: 0;
     right: 0;
     bottom: 0;
@@ -44,32 +101,37 @@ body {
     margin-top: 30px;
 
     /* border: solid 1px darkmagenta; */
-    border-radius: 10px;
+    border-radius: 30px;
     overflow: scroll;
     max-width: 90%;
-    max-height: 300px;
+    max-height: 250px;
 }
 
 
 p {
-    background-color: snow;
-    padding: 20px;
-    margin: 10px 0 10px 0px;
+    font-family: var(--font-body);
+    background-color: white;
+    padding: 10px;
+    margin: 3px 0 3px 0px;
 }
 
 h1 {
+    font-family: "Striper", "Neco", system-ui, sans-serif;
     text-align: center;
     padding: 0px;
-    color: darkslateblue;
+    color: #000000;
     text-transform: uppercase;
-    font-size: large;
+    font-size: 15px;
+}
+
+strong {
+    color: #5900ff;
 }
 
 h3 {
 
-
     display: block;
-    font-size: 10pt;
+    font-size: 8px;
     font-weight: 700;
     margin-top: 20px;
     text-transform: uppercase;
@@ -86,7 +148,7 @@ h2 {
     color: darkslateblue;
 
     display: block;
-    font-size: 9pt;
+    font-size: 8px;
     font-weight: 700;
     margin-top: 10px;
     text-transform: uppercase;
@@ -95,14 +157,9 @@ h2 {
     line-height: 20px;
 }
 
-p {
-    display: block;
-    font-size: 10pt;
-    font-weight: 700;
-    margin-top: 10px;
-}
-
 input {
+
+    font-family: var(--font-body);
 
     margin: 0px 12px 8px 12px;
     display: inline-block;
@@ -111,34 +168,38 @@ input {
     width: 30px;
     height: 30px;
     align-self: center;
+    font-size: 6.4px;
 }
 
 select {
+
+    font-family: var(--font-body);
 
     padding: 5px;
     margin: 0 auto;
     margin: 7px 7px 0px 7px;
     display: inline-block;
     width: 150px;
-    height: 30px;
+    height: 20px;
     display: inline;
+    border: solid 1px black;
+    font-size: 6.4px;
 }
 
 hr {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .hexdisplaywindow {
 
-    margin: 20px 5px 0px 5px;
+    margin: 0px 5px 0px 0px;
     display: inline-block;
     width: 30px;
     height: 30px;
-    background-color: beige;
-    border: solid 1px rgb(75, 135, 156);
+    background-color: none;
+    border: none;
     border-radius: 50px;
     align-content: center;
-    font-size: 7pt;
 }
 
 .hexdisplaywindowsmall,
@@ -161,7 +222,7 @@ hr {
     width: 10px;
     height: 10px;
     background-color: none;
-    border: solid 1px rgb(75, 135, 156);
+    border: none;
     border-radius: 50px;
     align-content: center;
     font-size: 7pt;
@@ -170,20 +231,26 @@ hr {
 
 #startbutton {
 
+    font-family: var(--font-body);
+    font-size: 5px;
+    font-weight: 700;
+
     margin: 0px 7px 0px 7px;
-    display: inline;
+    display: block;
     text-align: center;
     margin: 0 auto;
-    margin-top: 20px;
+    margin-top: 10px;
     align-self: center;
-    width: 70px;
+    width: 50px;
+    height: 50px;
+
     border-radius: 50%;
-    height: 70px;
+
     background-color: none;
-    border: 1px solid rgb(75, 135, 156);
+    border: 1px solid rgba(75, 134, 156, 0.447);
     padding: 0px 0px 0px 0px;
-    font-size: 6pt;
-    font-weight: 700;
+
+
 }
 
 
@@ -194,28 +261,31 @@ hr {
 #btnreset,
 #slaitemsop2 {
 
+    font-family: var(--font-body);
     display: block;
-
     left: 0;
     right: 0;
     top: 0;
     bottom: 0;
     margin: auto;
-    margin-bottom: 5px;
+    margin-bottom: 0px;
 
-    width: 100px;
+    width: 60px;
     height: 20px;
     background-color: none;
-    border: 1px solid rgb(75, 135, 156);
+    border: 1px solid #a0d2eb;
     border-radius: 2px;
-    font-size: 5pt;
+
+    font-size: 5px;
+
     color: black;
-    font-weight: 700;
+
+    font-weight: 600;
     text-align: center;
     position: relative;
-    top: 7px;
 
-    margin-top: 0px
+    text-transform: lowercase;
+    margin-top: 4px
 }
 
 #btnreset {
@@ -229,36 +299,56 @@ hr {
     margin: auto;
     margin-bottom: 5px;
 
-    width: 100px;
+    width: 30px;
     height: 20px;
     background-color: none;
-    border: 3px solid rgb(161, 0, 113);
+    border: 2px solid rgb(161, 0, 113);
     border-radius: 2px;
-    font-size: 5pt;
+    font-size: 5px;
     color: rgb(112, 4, 4);
     font-weight: 700;
     text-align: center;
     position: relative;
-    top: 7px;
 
-    margin-top: 0px
+    margin-top: 5px
 }
 
+
+#btnreset:hover {
+    color: black;
+    text-decoration: line-through;
+}
 
 #usernameinput,
 #kleurensetnaam {
 
     width: 250px;
-    height: 30px;
+    height: 20px;
     border-radius: 3px;
     border: none;
 
 }
 
-#copykleuren:hover {
-    border: 2px solid bisque;
+input:focus,
+textarea:focus {
+    outline: none;
+    /* verwijdert default blauwe rand */
+    border: 1px solid rgba(0, 0, 0, 0);
+    /* custom focus border */
 }
 
-#startbutton:hover {
-    border: 2px solid rgb(255, 238, 0);
+
+#kleurensetnaam:focus,
+#usernameinput:focus {
+
+    border: solid rgba(0, 0, 0, 0.072) 1px;
+}
+
+#copykleuren:hover,
+#startbutton:hover,
+#slaitemsop:hover,
+#btnhaaldataop:hover,
+#slaitemsop2:hover {
+
+    border: 2px solid bisque;
 }
