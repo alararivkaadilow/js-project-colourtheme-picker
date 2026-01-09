@@ -84,8 +84,7 @@ body {
 
 }
 
-#deel1vanusertekst {
-
+.deel1vanusertekst {
     color: black;
 
     font-weight: 400;
@@ -102,7 +101,49 @@ body {
 
     /* border: solid 1px darkmagenta; */
     border-radius: 30px;
-    overflow: scroll;
+    max-width: 90%;
+    max-height: 250px;
+}
+
+.buttonupclass {
+    background-color: white;
+    color: black;
+    font-size: 5px;
+    width: 10px;
+    height: 10px;
+
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+
+    border: 1px black solid;
+    text-align: center;
+
+    margin: auto;
+}
+
+
+#deel1vanusertekst,
+.deel1vanusertekst,
+.divItemEl {
+
+    color: black;
+
+    font-weight: 400;
+    font-size: 8px;
+    font-family: var(--font-body);
+
+    padding: 5px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    margin: auto;
+    margin-top: 5px;
+
+    /* border: solid 1px darkmagenta; */
+    border-radius: 30px;
     max-width: 90%;
     max-height: 250px;
 }
@@ -351,4 +392,9 @@ textarea:focus {
 #slaitemsop2:hover {
 
     border: 2px solid bisque;
+}
+
+#toongebruikersdata {
+    max-height: 300px;
+    overflow: scroll;
 }

@@ -1,13 +1,6 @@
 
 // !GLOBALE ARRAYS
 
-const { createElement } = require("react");
-
-
-
-
-
-
 //! INPUT ELEMENTEN
 
 
@@ -30,7 +23,6 @@ const displayp = document.getElementById("displayhex");
 const toonGebruikersDataParagraafEL = document.getElementById("toongebruikersdata");
 
 const displayusertekstdeel1EL = document.getElementById("deel1vanusertekst")
-const displayusertekstdeel2EL = document.getElementById("deel2vanusertekst")
 
 let divElC1 = document.getElementById("colour1");
 let divElC2 = document.getElementById("colour2");
@@ -283,16 +275,25 @@ function haalMijnDataOpEnToonHetaanDeGebruiker() { //! DIT HAALT DE DATA DAT IS 
     displayusertekstdeel1EL.innerHTML += `<br> <strong>Welkom terug, ${mynewObject.usernamestring}!
     <br>
     Je hebt ${mynewObject.arrayOfAllColourSchemesNames.length} in je kleuren wallet: </strong>
-    <br><br><hr><br>`
+    <br><br><hr>`
 
     //* EERST MAKEN WIJ EEN COLLECTIE VAN DIVS VOOR DE KLEUREN 
     for (let i = 0; i < mynewObject.arrayOfAllColourSchemes.length; i++) {
 
-        const div = createElement("div")
+        const divItemEl = document.createElement("div")
+        divItemEl.classList.add("divItemEl")
+        toonGebruikersDataParagraafEL.appendChild(divItemEl)
 
-        let itemboxEl = document.getElementById("itembox" + i)
+        const displayUserT = document.createElement("p")
+        displayUserT.classList.add("deel1vanusertekst")
 
-        displayusertekstdeel1EL.innerHTML += `${i + 1} ${mynewObject.arrayOfAllColourSchemesNames[i]}: <br>
+        const BtnUp = document.createElement("button")
+        BtnUp.classList.add("buttonupclass")
+        BtnUp.textContent = "^"
+        BtnUp.style.display = "block"
+        divItemEl.appendChild(BtnUp)
+
+        divItemEl.innerHTML += `${i + 1} ${mynewObject.arrayOfAllColourSchemesNames[i]}: <br>
     
                  <div class="hexdisplaywindowsmall${i}" id="colour1small"></div>
                 <div class="hexdisplaywindowsmall${i}" id="colour2small"></div>
@@ -317,9 +318,8 @@ function haalMijnDataOpEnToonHetaanDeGebruiker() { //! DIT HAALT DE DATA DAT IS 
             // }, 700 * counter)
         }
 
-
-
-        displayusertekstdeel1EL.innerHTML += ` ${mynewObject.arrayOfAllColourSchemes[i].join("<br>")} \n \n <br><br><hr><br>`
+        divItemEl.innerHTML += ` ${mynewObject.arrayOfAllColourSchemes[i].join("<br>")} \n \n <br><br><hr><br>`
+        let OpgeslagenKleurenDivs = Array.from(document.getElementsByClassName("divItemElement"))
 
     }
 
