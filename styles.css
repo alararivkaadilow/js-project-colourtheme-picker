@@ -69,6 +69,13 @@ body {
     background-color: #eee6ff;
 }
 
+.usercoloursaved {
+
+    background-color: #a0d2eb;
+    size: 100px;
+    width: auto;
+}
+
 #myflexbox {
 
     display: flex;
@@ -115,30 +122,33 @@ body {
     max-height: 250px;
 }
 
-.buttondownclass,
-.buttonupclass {
-    background-color: white;
-    color: black;
-    font-size: 5px;
+.radioinput {
     width: 10px;
     height: 10px;
+}
 
+#deel1vanusertekst,
+.deel1vanusertekst {
+
+    font-weight: 400;
+    font-size: 8px;
+    font-family: var(--font-body);
+
+    padding: 5px;
     left: 0;
     right: 0;
-    top: 20px;
     bottom: 0;
+    top: 0;
     margin: auto;
+    margin-top: 5px;
 
-    border: 1px black solid;
-
-    margin-bottom: 5px;
-
+    /* border: solid 1px darkmagenta; */
+    border-radius: 30px;
+    max-width: 90%;
+    max-height: 250px;
 
 }
 
-
-#deel1vanusertekst,
-.deel1vanusertekst,
 .divItemEl {
 
     color: black;
@@ -159,6 +169,7 @@ body {
     border-radius: 30px;
     max-width: 90%;
     max-height: 250px;
+    background-color: #a0d2eb;
 }
 
 

@@ -1,11 +1,12 @@
 
 // !GLOBALE ARRAYS
 
+
+
+
 //! INPUT ELEMENTEN
 
-
-
-const hexcolour = document.getElementById("colourpicker");
+const hexcolour = document.getElementById("colourpicker"); // 
 const stylepicker = document.getElementById("styles");
 
 let randomNumForSelectIndex = Math.floor(Math.random() * 6);
@@ -22,7 +23,17 @@ const kleurenschemainputnaamEl = document.getElementById("kleurensetnaam")
 const displayp = document.getElementById("displayhex");
 const toonGebruikersDataParagraafEL = document.getElementById("toongebruikersdata");
 
-const displayusertekstdeel1EL = document.getElementById("deel1vanusertekst")
+let introTekstVoorGebruikerParagraafEl = document.getElementById("introtekstvoorgebruiker")
+
+
+
+// introTekstVoorGebruikerParagraafEl.innerHTML += `<p class="deel1vanusertekst"> <br> <strong>Welkom terug,
+//     <br>
+//     Je hebt  in je kleuren wallet: </strong>
+//     <br><br><hr></p> `
+
+
+
 
 let divElC1 = document.getElementById("colour1");
 let divElC2 = document.getElementById("colour2");
@@ -53,17 +64,15 @@ const copybutton = document.getElementById("copykleuren");
 
 copybutton.disabled = true;
 
-
-
 //! --------------- WINDOW LOADED METHODES ------------------------------- //
 //!---------------  WINDOW LOADED METHODE------------------------------- //
 
 const randomhexnummer = Math.floor(Math.random() * 0x100000);
-console.log(`Voor stringmethode ${randomhexnummer}`)
+console.log(`Voor stringmethode ${randomhexnummer} `)
 let randomhexnummerstring = randomhexnummer.toString(16).padStart(6, "0");
-console.log(`na methode ${randomhexnummerstring}`)
+console.log(`na methode ${randomhexnummerstring} `)
 
-hexcolour.value = `#${randomhexnummerstring}`
+hexcolour.value = `#${randomhexnummerstring} `
 
 //! --------------- HIER ZIJN MIJN EVENTLISTENERS ------------------------------- //
 //!--------------- HIER ZIJN MIJN EVENTLISTENERS ------------------------------- //
@@ -256,10 +265,14 @@ function renderGebruikersLijst() {
 
 function haalMijnDataOpEnToonHetaanDeGebruiker() { //! DIT HAALT DE DATA DAT IS OPGESLAGEN IN DE LOCAL STORAGE OP EN TOONT HET AAN DE GEBRUIKER
 
-    displayusertekstdeel1EL.innerHTML = ""
+    //CODE DIE WE NODIG HEBBEN DATA OP TE HALEN UIT LOCALE STORAGE
 
-    let innertextarray = ""
-    let innertextarray2 = ""
+    let mykey = dropdownGebruikersEl.value;
+    console.log(mykey);
+    let mynewObject = JSON.parse(localStorage.getItem(mykey));
+    console.log(mynewObject)
+
+    // HIER SET ALLES OP 
 
     let myArrayofHTMLcollections = []
     let myArrayofDivVoorElkeKleur = []
@@ -267,62 +280,51 @@ function haalMijnDataOpEnToonHetaanDeGebruiker() { //! DIT HAALT DE DATA DAT IS 
     myArrayofHTMLcollections.length = 0
     myArrayofDivVoorElkeKleur.length = 0
 
-    let mykey = dropdownGebruikersEl.value;
-    console.log(mykey);
-    let mynewObject = JSON.parse(localStorage.getItem(mykey));
-    console.log(mynewObject)
+    // LEEGMAKEN VAN VORIGE GEBRUIKER
 
     toonGebruikersDataParagraafEL.innerHTML = ""
 
-    displayusertekstdeel1EL.innerHTML += `<br> <strong>Welkom terug, ${mynewObject.usernamestring}!
+    //* HIER MAAM IK HET BEGIN BERICHT VOOR DE GEBRUIKER...
+
+    toonGebruikersDataParagraafEL.innerHTML += `<p class="deel1vanusertekst"> <br> <strong>Welkom terug, ${mynewObject.usernamestring}!
     <br>
     Je hebt ${mynewObject.arrayOfAllColourSchemesNames.length} in je kleuren wallet: </strong>
-    <br><br><hr>`
+    <br><br><hr></p>
+    `
 
-    //* EERST MAKEN WIJ EEN COLLECTIE VAN DIVS VOOR DE KLEUREN 
+    //* EERST MAKEN WIJ EEN COLLECTIE VAN DIVS VOOR DE KLEUR BOLLETJES
+
     for (let i = 0; i < mynewObject.arrayOfAllColourSchemes.length; i++) {
 
         let divItemEl = document.createElement("div")
         divItemEl.classList.add("divItemEl")
         toonGebruikersDataParagraafEL.appendChild(divItemEl)
-
-        const displayUserT = document.createElement("p")
-        displayUserT.classList.add("deel1vanusertekst")
-
-        const BtnUp = document.createElement("button")
-        const BtnDown = document.createElement("button")
-
-        BtnUp.classList.add("buttonupclass")
-        BtnDown.classList.add("buttondownclass")
-
-        BtnUp.innerHTML = `^`
-        BtnDown.innerHTML = `|`
-
-        BtnUp.style.display = "block"
-        BtnDown.style.display = "block"
-
         divItemEl.append(document.createElement("br" + "br"))
-        divItemEl.appendChild(BtnUp)
 
-
-
-        divItemEl.innerHTML += `${i + 1} ${mynewObject.arrayOfAllColourSchemesNames[i]}: <br>
-    
-                 <div class="hexdisplaywindowsmall${i}" id="colour1small"></div>
-                <div class="hexdisplaywindowsmall${i}" id="colour2small"></div>
-                <div class="hexdisplaywindowsmall${i}" id="colour3small"></div>
-                <div class="hexdisplaywindowsmall${i}" id="colour4small"></div>
-                <div class="hexdisplaywindowsmall${i}" id="colour5small"></div>
-                  <div class="hexdisplaywindowsmall${i}" id="colour6small"></div>
+        divItemEl.innerHTML +=
+            `
+               <label for= "button${i}${i}${i}"> Selecteer item </label ><br>
+                <input style="radio" class="radioinput" id="button${i}${i}${i}" name="usercolours">
                 <br>
-                <br>
-                `
+
+                
+         <b>  <strong> Kleur:  ${i + 1} ${mynewObject.arrayOfAllColourSchemesNames[i]} -  </strong> </b> <br>
+
+                     <div class="hexdisplaywindowsmall${i}" id="colour1small"></div>
+                    <div class="hexdisplaywindowsmall${i}" id="colour2small"></div>
+                    <div class="hexdisplaywindowsmall${i}" id="colour3small"></div>
+                    <div class="hexdisplaywindowsmall${i}" id="colour4small"></div>
+                    <div class="hexdisplaywindowsmall${i}" id="colour5small"></div>
+                      <div class="hexdisplaywindowsmall${i}" id="colour6small"></div>
+                    <br>
+                    <br>
+                    `
         let htmlcollection = Array.from(document.getElementsByClassName("hexdisplaywindowsmall" + i))
 
         myArrayofHTMLcollections.push(htmlcollection)
 
-
         //* VOOR ELKE DIVJE DIE WE HEBBEN GEMAAKT GAAN WE NU EEN KLEUR GEVEN DIE IN EEN ARRAY ZIT
+
         for (let innerIndex = 0; innerIndex < htmlcollection.length; innerIndex++) {
 
             // let counter = innerIndex + 1
@@ -330,13 +332,11 @@ function haalMijnDataOpEnToonHetaanDeGebruiker() { //! DIT HAALT DE DATA DAT IS 
             myArrayofHTMLcollections[i][innerIndex].style.backgroundColor = mynewObject.arrayOfAllColourSchemes[i][innerIndex]
             // }, 700 * counter)
         }
+        divItemEl.innerHTML += ` 
 
-        divItemEl.innerHTML += ` ${mynewObject.arrayOfAllColourSchemes[i].join("<br>")} \n \n <br><br><hr>`
+            ${mynewObject.arrayOfAllColourSchemes[i].join("<br>")} \n \n <br><br><hr>
+            `
         let OpgeslagenKleurenDivs = Array.from(document.getElementsByClassName("divItemElement"))
-
-
-        divItemEl.appendChild(BtnDown)
-
 
     }
 
