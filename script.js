@@ -1,8 +1,7 @@
 
-// !GLOBALE ARRAYS
+// !GLOBALE
 
-
-
+objectOpgehaaldvanLocalstorage = {}
 
 //! INPUT ELEMENTEN
 
@@ -272,6 +271,10 @@ function haalMijnDataOpEnToonHetaanDeGebruiker() { //! DIT HAALT DE DATA DAT IS 
     let mynewObject = JSON.parse(localStorage.getItem(mykey));
     console.log(mynewObject)
 
+    objectOpgehaaldvanLocalstorage = mynewObject;
+
+
+
     // HIER SET ALLES OP 
 
     let myArrayofHTMLcollections = []
@@ -298,13 +301,15 @@ function haalMijnDataOpEnToonHetaanDeGebruiker() { //! DIT HAALT DE DATA DAT IS 
 
         let divItemEl = document.createElement("div")
         divItemEl.classList.add("divItemEl")
+        divItemEl.id = `${mynewObject.arrayOfAllColourSchemesNames[i]}`
+        console.log(divItemEl.id)
         toonGebruikersDataParagraafEL.appendChild(divItemEl)
         divItemEl.append(document.createElement("br" + "br"))
 
         divItemEl.innerHTML +=
             `
-               <label for= "button${i}${i}${i}"> Selecteer item </label ><br>
-                <input style="radio" class="radioinput" id="button${i}${i}${i}" name="usercolours">
+               <label for="${mynewObject.arrayOfAllColourSchemesNames[i]}"> Selecteer item </label ><br>
+                <input type="radio" class="radioinput" id="${mynewObject.arrayOfAllColourSchemesNames[i]}" name="usercolours">
                 <br>
 
                 
@@ -334,16 +339,36 @@ function haalMijnDataOpEnToonHetaanDeGebruiker() { //! DIT HAALT DE DATA DAT IS 
         }
         divItemEl.innerHTML += ` 
 
-            ${mynewObject.arrayOfAllColourSchemes[i].join("<br>")} \n \n <br><br><hr>
+            ${mynewObject.arrayOfAllColourSchemes[i].join("<br> ")} \n \n <br><br><hr>
             `
         let OpgeslagenKleurenDivs = Array.from(document.getElementsByClassName("divItemElement"))
 
     }
-
-
-
-
 }
+
+
+toonGebruikersDataParagraafEL.addEventListener("click", function (e) {
+
+    function Rangschikking(mynewObject) {
+        let selecteditemid = document.querySelector('input[type = "checkbox"] :checked').id;
+        console.log(selecteditemid)
+    }
+    console.log(objectOpgehaaldvanLocalstorage.arrayOfAllColourSchemesNames)
+
+
+    if (objectOpgehaaldvanLocalstorage.arrayOfAllColourSchemesNames.indexOf(selecteditemid) > 0) {
+        console.log("Index of " + selecteditem + " = " + objectOpgehaaldvanLocalstorage.arrayOfAllColourSchemes.indexOf(selecteditemid))
+    }
+    else {
+        console.log("Index of " + selecteditem + " = " + objectOpgehaaldvanLocalstorage.arrayOfAllColourSchemes.indexOf(selecteditemid))
+    }
+
+
+    console.log(e.target.id)
+
+})
+
+
 
 
 

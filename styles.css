@@ -167,9 +167,14 @@ body {
 
     /* border: solid 1px darkmagenta; */
     border-radius: 30px;
-    max-width: 90%;
+    max-width: 70%;
     max-height: 250px;
-    background-color: #a0d2eb;
+    background-color: #e8f7ff;
+    border: #a0d2eb;
+}
+
+.divItemEl:hover {
+    border: 1px solid aquamarine;
 }
 
 
@@ -321,6 +326,7 @@ select {
 
 hr {
     margin-bottom: 5px;
+    max-width: 70%;
 }
 
 .hexdisplaywindow {
