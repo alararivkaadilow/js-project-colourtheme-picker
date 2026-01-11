@@ -97,6 +97,8 @@ btnReset.addEventListener("click", function () {
     localStorage.clear();
     console.log(localStorage.length);
 
+    toonGebruikersDataParagraafEL.innerHTML = ""
+
     renderGebruikersLijst();
 });
 
@@ -165,7 +167,7 @@ function SlaGegevensOpInLocaleStorage() {  //!DIT SLAAT DE GEBRUIKERS GEGEVENS O
         colourSchemeInHexArray: [], //3 = derde veld van mijn object (Dit is een array met 6 hex kleurcodes)
         arrayOfAllColourSchemes: [], // 4 = Vierde veld van mijn object (Dit is een array van mijn hex codes arrays)
 
-        TijdVanOpslag: Date.now() // 5  Vijfde veld van mijn object (de opgeslagen tijd)
+        TijdVanOpslag: [] // 5  Vijfde veld van mijn object (de opgeslagen tijd)
     }
 
     if (nameInputEl.value === "") {
@@ -184,10 +186,9 @@ function SlaGegevensOpInLocaleStorage() {  //!DIT SLAAT DE GEBRUIKERS GEGEVENS O
         }
 
         MyStorageobject.arrayOfAllColourSchemes.push(MyStorageobject.colourSchemeInHexArray);
-        MyStorageobject.TijdVanOpslag = Date.now();
+        MyStorageobject.TijdVanOpslag.push(Date.now());
 
         let arrayposition = MyStorageobject.arrayOfAllColourSchemesNames.length - 1;
-
 
         console.log(`Lengte van de array met kleuren opgehaald van mijn div collectie : ${MyStorageobject.colourSchemeInHexArray.length}`)
 
@@ -228,15 +229,16 @@ function slaKleurenOpVoorBestaandeGebruiker() {
 
         myObject.colourSchemeInHexArray = 0;
         myObject.colourSchemeInHexArray = [];
-        for (let i = 0; i < myArrayofDivColourDisplay.length; i++) {
 
+        for (let i = 0; i < myArrayofDivColourDisplay.length; i++) {
             myObject.colourSchemeInHexArray.push(myArrayofDivColourDisplay[i].style.backgroundColor)
         }
 
         myObject.arrayOfAllColourSchemes.push(myObject.colourSchemeInHexArray);
-        myObject.TijdVanOpslag = Date.now();
+        myObject.TijdVanOpslag.push(Date.now());
 
         myObject.arrayOfAllColourSchemesNames.push(kleurenschemainputnaamEl.value)
+
 
         localStorage.setItem(key, JSON.stringify(myObject));
         haalMijnDataOpEnToonHetaanDeGebruiker();
@@ -285,6 +287,8 @@ function haalMijnDataOpEnToonHetaanDeGebruiker() { //! DIT HAALT DE DATA DAT IS 
 
     // LEEGMAKEN VAN VORIGE GEBRUIKER
 
+
+
     toonGebruikersDataParagraafEL.innerHTML = ""
 
     //* HIER MAAM IK HET BEGIN BERICHT VOOR DE GEBRUIKER...
@@ -306,14 +310,20 @@ function haalMijnDataOpEnToonHetaanDeGebruiker() { //! DIT HAALT DE DATA DAT IS 
         toonGebruikersDataParagraafEL.appendChild(divItemEl)
         divItemEl.append(document.createElement("br" + "br"))
 
+        if (i === 0) {
+            divItemEl.innerHTML += `&#9734 Dit je je favoriete item &#9734 <br> &#9734 &#9734 &#9734 &#9734 &#9734  <br>`
+        }
+
         divItemEl.innerHTML +=
             `
-               <label for="${mynewObject.arrayOfAllColourSchemesNames[i]}"> Selecteer item </label ><br>
-                <input type="radio" class="radioinput" id="${mynewObject.arrayOfAllColourSchemesNames[i]}" name="usercolours">
-                <br>
+         
 
                 
-         <b>  <strong> Kleur:  ${i + 1} ${mynewObject.arrayOfAllColourSchemesNames[i]} -  </strong> </b> <br>
+         <br> <b> <strong> Kleur ${i + 1} :  ${mynewObject.arrayOfAllColourSchemesNames[i]} -  </strong> </b> <br><br>
+
+               <label for="${mynewObject.arrayOfAllColourSchemesNames[i]}"> Selecteer item </label ><br>
+                <input type="radio" class="radioinput" id="${mynewObject.arrayOfAllColourSchemesNames[i]}" name="usercolours">
+            <br>
 
                      <div class="hexdisplaywindowsmall${i}" id="colour1small"></div>
                     <div class="hexdisplaywindowsmall${i}" id="colour2small"></div>
@@ -340,6 +350,10 @@ function haalMijnDataOpEnToonHetaanDeGebruiker() { //! DIT HAALT DE DATA DAT IS 
         divItemEl.innerHTML += ` 
 
             ${mynewObject.arrayOfAllColourSchemes[i].join("<br> ")} \n \n <br><br><hr>
+
+            Aangemaakt op: ${new Date(mynewObject.TijdVanOpslag[i]).toLocaleString("nl-BE", { timeZone: "Europe/Brussels" })}
+<br>
+<br>
             `
         let OpgeslagenKleurenDivs = Array.from(document.getElementsByClassName("divItemElement"))
 
@@ -347,24 +361,91 @@ function haalMijnDataOpEnToonHetaanDeGebruiker() { //! DIT HAALT DE DATA DAT IS 
 }
 
 
-toonGebruikersDataParagraafEL.addEventListener("click", function (e) {
+document.getElementById("plaatsitemomhoog").addEventListener("click", function () {
 
-    function Rangschikking(mynewObject) {
-        let selecteditemid = document.querySelector('input[type = "checkbox"] :checked').id;
-        console.log(selecteditemid)
-    }
+    let selecteditem = document.querySelector('input[type = "radio"]:checked').id;
+    selecteditem = String(selecteditem)
+    let selecteditemid = selecteditem.trim();
+    console.log(typeof selecteditemid)
+
     console.log(objectOpgehaaldvanLocalstorage.arrayOfAllColourSchemesNames)
 
+    if (objectOpgehaaldvanLocalstorage.arrayOfAllColourSchemesNames.includes(selecteditemid)) {
 
-    if (objectOpgehaaldvanLocalstorage.arrayOfAllColourSchemesNames.indexOf(selecteditemid) > 0) {
-        console.log("Index of " + selecteditem + " = " + objectOpgehaaldvanLocalstorage.arrayOfAllColourSchemes.indexOf(selecteditemid))
+        let indexnummer = objectOpgehaaldvanLocalstorage.arrayOfAllColourSchemesNames.indexOf(selecteditemid)
+        console.log("Index of " + selecteditemid + " = " + indexnummer)
+
+        if (indexnummer > 0) {
+
+            [objectOpgehaaldvanLocalstorage.arrayOfAllColourSchemesNames[indexnummer - 1],
+            objectOpgehaaldvanLocalstorage.arrayOfAllColourSchemesNames[indexnummer]] =
+                [objectOpgehaaldvanLocalstorage.arrayOfAllColourSchemesNames[indexnummer],
+                objectOpgehaaldvanLocalstorage.arrayOfAllColourSchemesNames[indexnummer - 1]];
+
+            [objectOpgehaaldvanLocalstorage.arrayOfAllColourSchemes[indexnummer - 1],
+            objectOpgehaaldvanLocalstorage.arrayOfAllColourSchemes[indexnummer]] =
+                [objectOpgehaaldvanLocalstorage.arrayOfAllColourSchemes[indexnummer],
+                objectOpgehaaldvanLocalstorage.arrayOfAllColourSchemes[indexnummer - 1]];
+
+            [objectOpgehaaldvanLocalstorage.TijdVanOpslag[indexnummer - 1],
+            objectOpgehaaldvanLocalstorage.TijdVanOpslag[indexnummer]] =
+                [objectOpgehaaldvanLocalstorage.TijdVanOpslag[indexnummer],
+                objectOpgehaaldvanLocalstorage.TijdVanOpslag[indexnummer - 1]];
+
+
+            let key = dropdownGebruikersEl.value //haalt de key op(dit is de gebruikernaams)
+            localStorage.setItem(key, JSON.stringify(objectOpgehaaldvanLocalstorage));
+            haalMijnDataOpEnToonHetaanDeGebruiker();
+
+        }
+        else {
+            alert("Dit item kan niet hoger geplaats worden")
+        }
     }
-    else {
-        console.log("Index of " + selecteditem + " = " + objectOpgehaaldvanLocalstorage.arrayOfAllColourSchemes.indexOf(selecteditemid))
+
+})
+
+document.getElementById("plaatsitemomlaag").addEventListener("click", function () {
+
+    let selecteditem = document.querySelector('input[type = "radio"]:checked').id;
+    selecteditem = String(selecteditem)
+    let selecteditemid = selecteditem.trim();
+    console.log(typeof selecteditemid)
+
+    console.log(objectOpgehaaldvanLocalstorage.arrayOfAllColourSchemesNames)
+
+    if (objectOpgehaaldvanLocalstorage.arrayOfAllColourSchemesNames.includes(selecteditemid)) {
+
+        let indexnummer = objectOpgehaaldvanLocalstorage.arrayOfAllColourSchemesNames.indexOf(selecteditemid)
+        console.log("Index of " + selecteditemid + " = " + indexnummer)
+
+        if (indexnummer + 1 === objectOpgehaaldvanLocalstorage.arrayOfAllColourSchemes.length) {
+            alert("Deze item kan niet lager worden geplaatst")
+        }
+        else {
+
+            [objectOpgehaaldvanLocalstorage.arrayOfAllColourSchemesNames[indexnummer + 1],
+            objectOpgehaaldvanLocalstorage.arrayOfAllColourSchemesNames[indexnummer]] =
+                [objectOpgehaaldvanLocalstorage.arrayOfAllColourSchemesNames[indexnummer],
+                objectOpgehaaldvanLocalstorage.arrayOfAllColourSchemesNames[indexnummer + 1]];
+
+            [objectOpgehaaldvanLocalstorage.arrayOfAllColourSchemes[indexnummer + 1],
+            objectOpgehaaldvanLocalstorage.arrayOfAllColourSchemes[indexnummer]] =
+                [objectOpgehaaldvanLocalstorage.arrayOfAllColourSchemes[indexnummer],
+                objectOpgehaaldvanLocalstorage.arrayOfAllColourSchemes[indexnummer + 1]];
+
+            [objectOpgehaaldvanLocalstorage.TijdVanOpslag[indexnummer + 1],
+            objectOpgehaaldvanLocalstorage.TijdVanOpslag[indexnummer]] =
+                [objectOpgehaaldvanLocalstorage.TijdVanOpslag[indexnummer],
+                objectOpgehaaldvanLocalstorage.TijdVanOpslag[indexnummer + 1]];
+
+            let key = dropdownGebruikersEl.value //haalt de key op(dit is de gebruikernaams)
+            localStorage.setItem(key, JSON.stringify(objectOpgehaaldvanLocalstorage));
+            haalMijnDataOpEnToonHetaanDeGebruiker();
+        }
+
+
     }
-
-
-    console.log(e.target.id)
 
 })
 

@@ -95,8 +95,8 @@ body {
     text-align: center;
     font: 8pt;
     background-color: white;
-    padding-bottom: 20px;
-    height: 450px;
+    padding-bottom: 0;
+    height: 500px;
     width: 350px;
 
 }
@@ -356,7 +356,7 @@ hr {
 .hexdisplaywindowsmall11,
 .hexdisplaywindowsmall12 {
 
-    margin: 20px 5px 0px 5px;
+    margin: 10px 5px 0px 5px;
     display: inline-block;
     width: 10px;
     height: 10px;
@@ -368,15 +368,14 @@ hr {
 }
 
 
-
+.radioinput {
+    margin: 0;
+}
 
 
 #copykleuren,
 #copykleuren2,
-#slaitemsop,
-#btnhaaldataop,
-#btnreset,
-#slaitemsop2 {
+#slaitemsop {
 
     font-family: var(--font-body);
     display: block;
@@ -386,6 +385,46 @@ hr {
     bottom: 0;
     margin: auto;
     margin-bottom: 0px;
+
+    width: 60px;
+    height: 20px;
+    background-color: none;
+    border: 1px solid #a0d2eb;
+    border-radius: 2px;
+
+    font-size: 5px;
+
+    color: black;
+
+    font-weight: 600;
+    text-align: center;
+    position: relative;
+
+    text-transform: lowercase;
+    margin-top: 4px
+}
+
+label {
+    margin-bottom: 00x;
+    margin-top: 5px;
+}
+
+#btnhaaldataop,
+#btnreset,
+#slaitemsop2,
+#plaatsitemomhoog,
+#plaatsitemomlaag {
+
+    font-family: var(--font-body);
+    display: block-inline;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    margin-bottom: 0px;
+    margin-right: 5px;
+    margin-left: 5px;
 
     width: 60px;
     height: 20px;
@@ -467,12 +506,16 @@ textarea:focus {
 #startbutton:hover,
 #slaitemsop:hover,
 #btnhaaldataop:hover,
-#slaitemsop2:hover {
+#slaitemsop2:hover,
+#plaatsitemomhoog:hover,
+#plaatsitemomlaag {
 
     border: 2px solid bisque;
 }
 
 #toongebruikersdata {
+
     max-height: 300px;
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
