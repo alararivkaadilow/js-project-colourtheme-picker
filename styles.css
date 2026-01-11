@@ -59,7 +59,10 @@ ClashGrotesk-Regular
 }
 
 
+
 body {
+
+
 
     font-family: var(--font-body);
     font-size: 8px;
@@ -444,6 +447,39 @@ label {
     margin-top: 4px
 }
 
+.verplaatsitemUp,
+.verplaatsitemDown {
+
+    -family: var(--font-body);
+
+    display: block;
+    position: relative;
+
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+
+    margin-top: 5px;
+
+    width: 63px;
+    height: 15px;
+    background-color: none;
+    border: 1px solid #a0d2eb;
+    border-radius: 2px;
+
+    font-size: 4px;
+
+    color: black;
+
+    font-weight: 600;
+    text-align: center;
+
+    text-transform: lowercase;
+
+}
+
 #btnreset {
 
     display: block;
@@ -508,8 +544,13 @@ textarea:focus {
 #btnhaaldataop:hover,
 #slaitemsop2:hover,
 #plaatsitemomhoog:hover,
-#plaatsitemomlaag {
+#plaatsitemomlaag:hover {
 
+    border: 2px solid bisque;
+}
+
+.verplaatsitemUp:hover,
+.verplaatsitemDown:hover {
     border: 2px solid bisque;
 }
 

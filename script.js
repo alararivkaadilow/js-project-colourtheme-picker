@@ -321,9 +321,10 @@ function haalMijnDataOpEnToonHetaanDeGebruiker() { //! DIT HAALT DE DATA DAT IS 
                 
          <br> <b> <strong> Kleur ${i + 1} :  ${mynewObject.arrayOfAllColourSchemesNames[i]} -  </strong> </b> <br><br>
 
-               <label for="${mynewObject.arrayOfAllColourSchemesNames[i]}"> Selecteer item </label ><br>
-                <input type="radio" class="radioinput" id="${mynewObject.arrayOfAllColourSchemesNames[i]}" name="usercolours">
-            <br>
+        
+
+                 <button class="verplaatsitemUp" id="${mynewObject.arrayOfAllColourSchemesNames[i]}U"> <b><strong>PLAATS ITEM OMHOOG&#8679</strong></b> </button>
+            <button class="verplaatsitemDown" id="${mynewObject.arrayOfAllColourSchemesNames[i]}D"> <b><strong>PLAATS ITEM OMLAAG &#8681</strong></b> </button>
 
                      <div class="hexdisplaywindowsmall${i}" id="colour1small"></div>
                     <div class="hexdisplaywindowsmall${i}" id="colour2small"></div>
@@ -361,63 +362,42 @@ function haalMijnDataOpEnToonHetaanDeGebruiker() { //! DIT HAALT DE DATA DAT IS 
 }
 
 
-document.getElementById("plaatsitemomhoog").addEventListener("click", function () {
-
-    let selecteditem = document.querySelector('input[type = "radio"]:checked').id;
-    selecteditem = String(selecteditem)
-    let selecteditemid = selecteditem.trim();
-    console.log(typeof selecteditemid)
-
-    console.log(objectOpgehaaldvanLocalstorage.arrayOfAllColourSchemesNames)
-
-    if (objectOpgehaaldvanLocalstorage.arrayOfAllColourSchemesNames.includes(selecteditemid)) {
-
-        let indexnummer = objectOpgehaaldvanLocalstorage.arrayOfAllColourSchemesNames.indexOf(selecteditemid)
-        console.log("Index of " + selecteditemid + " = " + indexnummer)
-
-        if (indexnummer > 0) {
-
-            [objectOpgehaaldvanLocalstorage.arrayOfAllColourSchemesNames[indexnummer - 1],
-            objectOpgehaaldvanLocalstorage.arrayOfAllColourSchemesNames[indexnummer]] =
-                [objectOpgehaaldvanLocalstorage.arrayOfAllColourSchemesNames[indexnummer],
-                objectOpgehaaldvanLocalstorage.arrayOfAllColourSchemesNames[indexnummer - 1]];
-
-            [objectOpgehaaldvanLocalstorage.arrayOfAllColourSchemes[indexnummer - 1],
-            objectOpgehaaldvanLocalstorage.arrayOfAllColourSchemes[indexnummer]] =
-                [objectOpgehaaldvanLocalstorage.arrayOfAllColourSchemes[indexnummer],
-                objectOpgehaaldvanLocalstorage.arrayOfAllColourSchemes[indexnummer - 1]];
-
-            [objectOpgehaaldvanLocalstorage.TijdVanOpslag[indexnummer - 1],
-            objectOpgehaaldvanLocalstorage.TijdVanOpslag[indexnummer]] =
-                [objectOpgehaaldvanLocalstorage.TijdVanOpslag[indexnummer],
-                objectOpgehaaldvanLocalstorage.TijdVanOpslag[indexnummer - 1]];
 
 
-            let key = dropdownGebruikersEl.value //haalt de key op(dit is de gebruikernaams)
-            localStorage.setItem(key, JSON.stringify(objectOpgehaaldvanLocalstorage));
-            haalMijnDataOpEnToonHetaanDeGebruiker();
+toonGebruikersDataParagraafEL.addEventListener("click", function (e) {
 
-        }
-        else {
-            alert("Dit item kan niet hoger geplaats worden")
-        }
+    // let selecteditem = document.querySelector('input[type = "radio"]:checked').id
+
+    let selecteditemWhole = e.target.id;
+    console.log(selecteditemWhole)
+
+    if (selecteditemWhole.endsWith("D")) {
+        console.log(selecteditemWhole + "  D girl!!!")
+        ItemOmlaagPlaatsen(selecteditemWhole)
+
+    }
+    else if (selecteditemWhole.endsWith("U")) {
+        console.log(selecteditemWhole + "  U girl!!")
+        ItemOmhoogPlaatsen(selecteditemWhole)
+    }
+    else {
+
     }
 
 })
 
-document.getElementById("plaatsitemomlaag").addEventListener("click", function () {
 
-    let selecteditem = document.querySelector('input[type = "radio"]:checked').id;
-    selecteditem = String(selecteditem)
-    let selecteditemid = selecteditem.trim();
-    console.log(typeof selecteditemid)
 
-    console.log(objectOpgehaaldvanLocalstorage.arrayOfAllColourSchemesNames)
+function ItemOmlaagPlaatsen(selecteditem) {
 
-    if (objectOpgehaaldvanLocalstorage.arrayOfAllColourSchemesNames.includes(selecteditemid)) {
+    let searchkey = selecteditem.slice(0, -1)
 
-        let indexnummer = objectOpgehaaldvanLocalstorage.arrayOfAllColourSchemesNames.indexOf(selecteditemid)
-        console.log("Index of " + selecteditemid + " = " + indexnummer)
+    if (objectOpgehaaldvanLocalstorage.arrayOfAllColourSchemesNames.includes(searchkey)) {
+
+        console.log(`Key: ${searchkey}, was succesfully retreived. Methode om omlaag te plaatsen wordt geexcuteerd `)
+        let indexnummer = objectOpgehaaldvanLocalstorage.arrayOfAllColourSchemesNames.indexOf(searchkey)
+        console.log("Index of " + searchkey + " = " + indexnummer)
+
 
         if (indexnummer + 1 === objectOpgehaaldvanLocalstorage.arrayOfAllColourSchemes.length) {
             alert("Deze item kan niet lager worden geplaatst")
@@ -442,24 +422,55 @@ document.getElementById("plaatsitemomlaag").addEventListener("click", function (
             let key = dropdownGebruikersEl.value //haalt de key op(dit is de gebruikernaams)
             localStorage.setItem(key, JSON.stringify(objectOpgehaaldvanLocalstorage));
             haalMijnDataOpEnToonHetaanDeGebruiker();
+            console.log("Item is succesvol omlaag geplaatst")
         }
-
-
     }
 
-})
+}
+
+
+function ItemOmhoogPlaatsen(selecteditem) {
+
+    let searchkey = selecteditem.slice(0, -1)
+
+    console.log(searchkey)
+
+    if (objectOpgehaaldvanLocalstorage.arrayOfAllColourSchemesNames.includes(searchkey)) {
+
+        console.log(`Key: ${searchkey}, was succesfully retreived. Methode om omhoog te plaatsen wordt geexcuteerd  `)
+        let indexnummer = objectOpgehaaldvanLocalstorage.arrayOfAllColourSchemesNames.indexOf(searchkey)
+        console.log("Index of " + searchkey + " = " + indexnummer)
 
 
 
+        if (indexnummer > 0) {
 
+            [objectOpgehaaldvanLocalstorage.arrayOfAllColourSchemesNames[indexnummer - 1],
+            objectOpgehaaldvanLocalstorage.arrayOfAllColourSchemesNames[indexnummer]] =
+                [objectOpgehaaldvanLocalstorage.arrayOfAllColourSchemesNames[indexnummer],
+                objectOpgehaaldvanLocalstorage.arrayOfAllColourSchemesNames[indexnummer - 1]];
 
+            [objectOpgehaaldvanLocalstorage.arrayOfAllColourSchemes[indexnummer - 1],
+            objectOpgehaaldvanLocalstorage.arrayOfAllColourSchemes[indexnummer]] =
+                [objectOpgehaaldvanLocalstorage.arrayOfAllColourSchemes[indexnummer],
+                objectOpgehaaldvanLocalstorage.arrayOfAllColourSchemes[indexnummer - 1]];
 
+            [objectOpgehaaldvanLocalstorage.TijdVanOpslag[indexnummer - 1],
+            objectOpgehaaldvanLocalstorage.TijdVanOpslag[indexnummer]] =
+                [objectOpgehaaldvanLocalstorage.TijdVanOpslag[indexnummer],
+                objectOpgehaaldvanLocalstorage.TijdVanOpslag[indexnummer - 1]];
 
+            let key = dropdownGebruikersEl.value //haalt de key op(dit is de gebruikernaams)
+            localStorage.setItem(key, JSON.stringify(objectOpgehaaldvanLocalstorage));
+            haalMijnDataOpEnToonHetaanDeGebruiker();
 
+            console.log("Item is succesvol omlaag geplaatst")
 
+        }
+        else {
+            alert("Dit item kan niet hoger geplaats worden")
+        }
+    }
 
-
-
-
-
+}
 
